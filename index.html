@@ -10,7 +10,13 @@
     <title>Vanilla Slider</title>
 </head>
 <body>
-<div>
+<section>
+    <div class="tm-header">
+      <h2 style="color: #fff;text-align: center;">San Diego Travel Company</h2>
+    </div>
+</section>
+
+<section>
     <div class="slideshow">
         <div class="slide">Slide 1</div>
         <div class="slide">Slide 2</div>
@@ -25,38 +31,40 @@
         <button class="arrow-button left-arrow" onclick="clickChangeSlide(i-1)">&#60;</button>
         <button class="arrow-button right-arrow" onclick="clickChangeSlide(i+1)">&#62;</button>
       </div>
-    </div>
+    </section>
     <section>
-      <div class="row">
-        <div class="col-sm-4">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Special title treatment</h5>
-              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
+     <div class="tm-cards">
+        <div class="row">
+            <div class="col-sm-4">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Stay For A While</h5>
+                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                  <a href="#" class="btn btn-primary">Learn More</a>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-        <div class="col-sm-4">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Special title treatment</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+            <div class="col-sm-4">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">Keep The Summer Time Blues</h5>
+                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    <a href="#" class="btn btn-primary">Learn More</a>
+                  </div>
+                </div>
+              </div>
+            <div class="col-sm-4">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Learn The Way of The Ocean</h5>
+                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                  <a href="#" class="btn btn-primary">Learn More</a>
+                </div>
               </div>
             </div>
           </div>
-        <div class="col-sm-4">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Special title treatment</h5>
-              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </div>
-        </div>
-      </div>
-</section>
+     </div>
+    </section>
 
   <script src="tm-slider.js"></script>
 </body>
