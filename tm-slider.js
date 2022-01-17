@@ -1,62 +1,38 @@
-document.addEventListener('DOMContentLoaded', () => {
+let i = -1;
+let time = 3000;
+let slideTimer;
+let slides = document.getElementsByClassName('slide');
+let slideDots = document.getElementsByClassName('dot');
 
-    const SLIDETIME = 500;
-    const backButton = document.querySelector('.tm-slider-back-btn');
-    const forwardButton = document.querySelectorALL('.tm-slider-next-btn');
-    const allSlides = [...document.querySelectorALL('.tm-slide')];
+function clickChangeSlide(n){
+  clearTimeout(slideTimer);
+  console.log(n);
+  changeSlide(n, true);
+}
 
-    let clickable = true;
-    let active = null;
-    let newActive = null;
-
-    function initSlider () {
-      allSlides.forEach(slide => {
-        slide.setAttribute(
-          'style',
-          `transition: transform ${SLIDETIME}ms ease;
-                       animation-duration: ${SLIDETIME}ms
-          `,
-        );
-      });
+function changeSlide(n = i, manual = false){
+  
+  for(let j = 0; j < slides.length; j++){
+    if(j == i) {
+      slides[j].classList.add('prev-slide');
+      slides[j].classList.remove('active-slide');
+      slideDots[j].classList.remove('active-dot');
+      continue; 
     }
+    slideDots[j].classList.remove('active-dot');
+    slides[j].classList.remove('prev-slide'); 
+    slides[j].classList.remove('active-slide');
+  }
+  if(manual){
+    if(n < 0) i = slides.length - 1
+    else if(n > slides.length - 1) i = 0
+    else i = n
+  }else i = i < slides.length - 1 ? i+1 : 0;
+  
+  slides[i].classList.add('active-slide');
+  slideDots[i].classList.add('active-dot');
+  
+  slideTimer = setTimeout('changeSlide()', time);
+}
 
-    function changeSlide(forward) {
-        if (clickable) {
-            clickable = false;
-            active = document.querySelector('.active');
-            const activeSlideIndex = allSlides.indexOf(active);
-
-            if (forard) {
-
-              newActive = allSlides[(activeSlideIndex + 1) % allSlides.length];
-              active.classList.add('slideOutLeft');
-              newActive.classList.add('slideInRight', 'active');
-            } else {
-              newActive = allSlides[(activeSlideIndex - 1 + allSlides.length) % allSlides.length];
-              active.classList.add('slideOutRight');
-              newActive.classList.add('slideInLeft', 'active');
-            }
-        }
-    }
-
-    allSlides.forEach(slide => {
-        slide.addEventListener('transitioned', () => {
-            if(slide === active && !clickable) {
-                clickable = true;
-                active.classmate = 'tm-slide';
-                
-            };
-        });
-    });
-
-
-
-    // EVENT LISTENERS
-    forwardButton.addEventListener('click', () => {
-      changeSlide(true);
-    })
-    backButton.addEventListener('click', () => {
-      changeSlide(false);
-    })
-    initSlider();
-});
+window.onload = changeSlide();
